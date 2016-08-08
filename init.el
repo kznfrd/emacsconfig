@@ -15,6 +15,8 @@
 
 ;; Auto-complete
 (use-package auto-complete)
+(ac-config-default)
+(ac-set-trigger-key "TAB")
 
 ;; '¥' を入力したら '\' となるように
 (define-key global-map [?¥] [?\\])

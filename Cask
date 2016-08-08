@@ -3,6 +3,7 @@
 (source melpa)
 
 (depends-on "async")
+(depends-on "anything")
 (depends-on "auto-complete")
 (depends-on "bind-key")
 (depends-on "cask")
