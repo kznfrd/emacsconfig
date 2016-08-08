@@ -43,7 +43,7 @@
 (define-key global-map (kbd "C-o") 'toggle-input-method)  ; 日本語入力切替
 ;(define-key global-map (kbd "M-C-g") 'grep)               ; grep
 (define-key global-map (kbd "C-[ M-C-g") 'goto-line)      ; 指定行へ移動
-
+(global-set-key [f8] 'neotree-toggle)                      ;neotree
 ;;; 対応する括弧を光らせる。
 (show-paren-mode 1)
 ;;; ウィンドウ内に収まらないときだけ括弧内も光らせる。
@@ -60,12 +60,14 @@
   (add-hook 'mac-selected-keyboard-input-source-change-hook
 	    'my-mac-selected-keyboard-input-source-chage-function))
 
+;; ツールバーを非表示
+(tool-bar-mode 0)
 
 ;;; Appearences
 ;(use-package color-theme-tango)
 ;(use-package color-theme-solarized)
 ;(use-package solarized-theme)
-(load-theme 'solarized-dark t)
+;(load-theme 'solarized-dark t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -89,5 +91,18 @@
              (setq jedi:complete-on-dot t)
              (local-set-key (kbd "M-TAB") 'jedi:complete)))
 
+;; darclua-theme
+(use-package darcula-theme
+  :ensure t
+  :config
+  ;; your preferred main font face here
+  (set-frame-font "Inconsolata-14"))
+
+;; flake
+(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+(setq flymake-python-pyflakes-executable "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/flake8")
+
+(custom-set-variables
+ '(flymake-python-pyflakes-extra-arguments (quote ("--max-line-length=120" "--ignore=E128"))))
 
 (package-initialize)
