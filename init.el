@@ -85,7 +85,16 @@
  ;; If there is more than one, they won't work right.
  )
 
-;;; Python
+;;; python-mode
+(use-package python-mode)
+
+;;; auto pep
+(require 'py-autopep8)
+(setq py-autopep8-options '("--max-line-length=200"))
+(setq flycheck-flake8-maximum-line-length 200)
+(py-autopep8-enable-on-save)
+
+;;; Python Jedi
 (use-package jedi)
 (add-hook 'python-mode-hook
           '(lambda()
@@ -101,6 +110,7 @@
   (set-frame-font "Inconsolata-14"))
 
 ;; flake
+()
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 (setq flymake-python-pyflakes-executable "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/flake8")
 
